@@ -3,8 +3,8 @@
     <apiVersion>62.0</apiVersion>
     <customErrors>
         <description>Displays an error message when the user tries to delete an open case.</description>
-        <name>Cannot_Close_Open_Case</name>
-        <label>Cannot Close Open Case</label>
+        <name>Cannot_Delete_Open_Case</name>
+        <label>Cannot Delete Open Case</label>
         <locationX>176</locationX>
         <locationY>287</locationY>
         <customErrorMessages>
@@ -39,7 +39,7 @@
         <locationX>50</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Cannot_Close_Open_Case</targetReference>
+            <targetReference>Cannot_Delete_Open_Case</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
