@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <assignments>
+        <description>Uses a naming convention to override the opportunity name.</description>
+        <name>Override_the_Opportunity_Name</name>
+        <label>Override the Opportunity Name</label>
+        <locationX>176</locationX>
+        <locationY>287</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Name</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>OpportunityNamingConvention</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <description>Overrides the opportunity&apos;s name before the record is created. Uses the following naming convention: &lt;&lt;Close Date Year&gt;&gt; &lt;&lt;Opportunity’s Account Name&gt;&gt; - &lt;&lt;Opportunity Type&gt;&gt;</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>TextCloseDateYear</name>
+        <dataType>String</dataType>
+        <expression>TEXT(YEAR({!$Record.CloseDate}))</expression>
+    </formulas>
+    <interviewLabel>Set Default Opportunity Name {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Set Default Opportunity Name</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Override_the_Opportunity_Name</targetReference>
+        </connector>
+        <object>Opportunity</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <description>Establishes a default name for each opportunity using the close date year, the opportunity&apos;s account name, and the opportunity type.</description>
+        <name>OpportunityNamingConvention</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>{!TextCloseDateYear} {!$Record.Account.Name} - {!$Record.Type}</text>
+    </textTemplates>
+</Flow>
