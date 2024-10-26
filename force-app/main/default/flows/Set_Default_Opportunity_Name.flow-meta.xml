@@ -15,7 +15,7 @@
             </value>
         </assignmentItems>
     </assignments>
-    <description>Overrides the opportunity&apos;s name before the record is created. Uses the following naming convention: &lt;&lt;Close Date Year&gt;&gt; &lt;&lt;Opportunity’s Account Name&gt;&gt; - &lt;&lt;Opportunity Type&gt;&gt;</description>
+    <description>Overrides the opportunity&apos;s name before the record is created. Uses the following naming convention: &lt;&lt;Close Date Year&gt;&gt; &lt;&lt;Opportunity’s Account Name&gt;&gt; Opportunity</description>
     <environments>Default</environments>
     <formulas>
         <name>TextCloseDateYear</name>
@@ -58,6 +58,6 @@
         <description>Establishes a default name for each opportunity using the close date year, the opportunity&apos;s account name, and the opportunity type.</description>
         <name>OpportunityNamingConvention</name>
         <isViewedAsPlainText>true</isViewedAsPlainText>
-        <text>{!TextCloseDateYear} {!$Record.Account.Name} - {!$Record.Type}</text>
+        <text>{!TextCloseDateYear} {!$Record.Account.Name} Opportunity</text>
     </textTemplates>
 </Flow>
